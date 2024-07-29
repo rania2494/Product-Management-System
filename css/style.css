@@ -1,0 +1,119 @@
+:root{
+    --color1:#213555;
+    --color2:#4F709C;
+    --color3:#D8C4B6;
+    --color4:#F5EFE7;
+}
+
+body{
+    font-family: 'Josefin Sans', sans-serif;
+    background-image: url(../images/blob-scene-haikei.svg);
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+
+.round-right{
+border-top-right-radius: 2rem ;
+border-bottom-left-radius: 2rem ;
+}
+
+.bg-color1{
+    background-color:var(--color1);
+}
+
+.bg-color2{
+    background-color: var(--color2);
+}
+.bg-color3{
+    background-color: var(--color3);
+}
+.bg-color4{
+    background-color: var(--color4);
+}
+.text-color1{
+    color: var(--color1);
+}
+.text-color4{
+    color: var(--color4);
+}
+.customer-height1{
+height: 20vh;
+}
+.customer-height2{
+    height: 60vh;
+    }
+.main-div {
+    color: var(--color1);
+    background-color: var(--color4);
+}
+.main-div:focus {
+    color: var(--color1);
+    background-color: var(--color4);
+    border-color: var(--color2);
+    transform: scale(1.025);}
+.main-btn {
+    color: var(--color4);
+    background-color: var(--color1);
+    border: 2px solid var(--color1);
+}
+.main-btn:focus , .main-btn:hover {
+    color: var(--color1);
+    background-color: var(--color4);
+    border: 2px solid var(--color1);
+    }
+
+#updateProduct:hover{
+    color: var(--color1);
+    background-color: var(--color4);
+    
+}
+.dropdown-menu{
+    z-index: 100000;
+}
+.dropdown-item:hover ,.dropdown-item:focus {
+    color: var(--color4);
+    background-color: var(--color1);
+}
+
+.table{
+    --bs-table-bg:var(--color4);
+    --bs-table-border-color:var(--color1);
+    --bs-table-color:var(--color1);
+    border-color:var(--color1);
+}
+
+
+
+
+.main-table::-webkit-scrollbar{
+    width: 0.5rem;
+    height: 0.5rem;
+}
+
+.main-table::-webkit-scrollbar-thumb:hover{
+    border-radius: .5rem;
+    background-color: #0004;
+}
+
+@media only screen and (max-width: 992px) {
+    .customer-height1{
+        height: 15vh;
+        }
+        .customer-height2{
+            height: 30vh;
+            }
+            .my-4{
+                margin-bottom:0.5rem !important;
+                margin-top:0rem !important ;
+                            }
+  }
+@media only screen and (max-width: 576px) {
+    .customer-height1{
+        height: 20vh;
+        }
+        .customer-height2{
+            height: 100vh;
+            }
+
+  }

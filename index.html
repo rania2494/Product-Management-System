@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- title -->
+    <title>Product Management System</title>
+    <link rel="icon" href="images/Logo.svg" />
+    <!-- meta tags -->
+    <meta name="niewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Rania Abdelaal" />
+    <meta
+      name="keywords"
+      content="TV mobile laptop price apple htc samsung toshiba"
+    />
+    <meta name="description" content="CRUD" />
+    <meta charset="UTF-8" />
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <!-- css -->
+    <link rel="stylesheet" href="CSS/all.min.css" />
+    <link rel="stylesheet" href="CSS/bootstrap.min.css" />
+    <link rel="stylesheet" href="CSS/style.css" />
+  </head>
+
+  <body>
+    <main class="container position-fixed top-50 start-50 translate-middle px-5">
+        <div
+          class="border border-0 shadow bg-color4 round-right rounded-bottom-5 row  "
+        >
+          <div
+            class="bg-color1 text-color4 fw-bold border border-0 round-right shadow px-4 py-2 col-lg-5"
+          >
+            <label for="category" class="pt-2">Product Category</label>
+            <select
+              name="category"
+              id="category"
+              class="form-select main-div"
+            >
+              <option value="Television">Television</option>
+              <option value="Phone">Phone</option>
+              <option value="Laptop">Laptop</option>
+              <option value="Tablet">Tablet</option>
+              <option value="Camera">Camera</option>
+            </select>
+            <div
+            class="fs-6 px-3 text-danger invisible"
+            role="alert"
+            id="categoryAlert"
+          >
+          Category must be selected
+        </div>
+            <label for="name" class="pt-2">Product Name</label>
+            <input
+              type="text"
+              id="name"
+              class="form-control main-div"
+              placeholder="EX: Samsung"
+            />
+            <div
+              class="fs-6 px-3 text-danger invisible"
+              role="alert"
+              id="nameAlert"
+            >
+              Name must be at least 2 characters
+            </div>
+            <label for="quantity" class="pt-2">Product Quantity</label>
+            <input
+              type="number"
+              id="quantity"
+              class="form-control main-div"
+              placeholder="EX: 50"
+            />
+            <div
+              class="fs-6 px-3 text-danger invisible"
+              role="alert"
+              id="quantityAlert"
+            >
+              Quantity must be from 1 to 100
+            </div>
+            <label for="price" class="pt-2">Product Price (EGP)</label>
+            <input
+              type="number"
+              id="price"
+              class="form-control main-div"
+              placeholder="EX: 5999"
+            />
+            <div
+              class="fs-6 px-3 text-danger invisible"
+              role="alert"
+              id="priceAlert"
+            >
+              Price must be from 1000 to 50000
+            </div>
+            <button
+              class="bg-color4 text-color1 btn border border-2 rounded-pill border-2 my-4 d-block mx-auto fw-bold"
+              id="addProduct"
+            >
+              Add Product
+            </button>
+            <button
+              class="bg-color1 text-color4 btn border border-2 rounded-pill border-2 my-4 d-block mx-auto fw-bold d-none"
+              id="updateProduct"
+            >
+              Update Product
+            </button>
+          </div>
+          <div class="text-color1 col-lg-7 py-3">
+            <div class="customer-height1 d-flex flex-column ">
+              <div class="m-2">
+                <input
+                  class="form-control shadow-lg main-div"
+                  list="datalistOptions"
+                  id="search"
+                  placeholder="Type to search..."
+                  onkeyup="searchProduct()"
+                />
+              </div>
+              <div class="m-3 d-flex justify-content-between align-items-baseline">
+                <div>
+                  <div class="dropdown d-inline ">
+                    <a
+                      class="btn main-btn  dropdown-toggle "
+                      href="#"
+                      role="button"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                    >
+                      Filter By <i class="fa-solid fa-filter"></i>
+                    </a>
+  
+                    <ul class="dropdown-menu bg-color4">
+                      <li><p class="dropdown-item text-color1" onclick="ProductFilter('All')">All</p></li>
+                      <li><p class="dropdown-item text-color1" onclick="ProductFilter('Television')">Television</p></li>
+                      <li>
+                        <p class="dropdown-item text-color1"  onclick="ProductFilter('Phone')">Phone</p>
+                      </li>
+                      <li>
+                        <p class="dropdown-item text-color1" onclick="ProductFilter('Laptop')">Laptop</p>
+                      </li>
+                      <li>
+                        <p class="dropdown-item text-color1"  onclick="ProductFilter('Tablet')">Tablet</p>
+                      </li>
+                      <li>
+                        <p class="dropdown-item text-color1"  onclick="ProductFilter('Camera')">Camera</p>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="dropdow d-inline">
+                    <a
+                      class="btn main-btn  dropdown-toggle "
+                      href="#"
+                      role="button"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                    >
+                      Sort By <i class="fa-solid fa-sort"></i>
+                    </a>
+  
+                    <ul class="dropdown-menu bg-color4 text-color1">
+                      <li><p class="dropdown-item text-color1" onclick="sortProductByName()">Product Name</p></li>
+                      <li><p class="dropdown-item text-color1" onclick="sortProductByPrice()">Price</p></li>
+                      <li><p class="dropdown-item text-color1" onclick="sortProductByQuantity()">Quantity</p></li>
+                     
+                    </ul>
+                  </div>
+                </div>
+
+                <div>
+                  <button  id="btnExport" class="btn main-btn ">Download Table</button>
+                </div>
+              </div>
+            </div>
+            <div class="w-100 position-relative customer-height2 overflow-auto main-table shadow-lg border rounded-4">
+              <table class="table shadow-lg text-center mb-0" id="table">
+                <thead class="sticky-top top-0 ">
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Update</th>
+                    <th scope="col">Delete</th>
+                  </tr>
+                </thead>
+                <tbody class="table-group-divider" id="productTable"></tbody>
+              </table>
+              <div class="fs-6 px-3 text-danger d-none text-center" id="noData">
+                NO DATA FOUND
+              </div>
+            </div>
+          </div>
+        </div>
+    </main>
+
+
+
+<script src="js/bootstrap.bundle.js"></script>
+    <script src="JS/main.js"></script>
+  </body>
+</html>
